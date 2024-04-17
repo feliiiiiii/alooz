@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Form</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <form id="registrationForm">
+    <table>
+        <tr>
+   <td> <label for="username">Username:</label><br></td>
+   <td><input type="text" id="username" name="username"><br></td>
+    </tr>
+    <tr>
+    <td><label for="password">Password:</label><br></td>
+   <td><input type="password" id="password" name="password"><br></td>
+   </tr>
+    <tr>
+    <td><label for="email">Email:</label><br></td>
+   <td><input type="email" id="email" name="email"><br></td>
+    </tr>
+    <tr>
+   <td> <label for="phone">Phone:</label><br></td>
+   <td> <input type="tel" id="phone" name="phone"><br></td>
+    </tr>
+   <tr>
+    <td> <label for="cv">Upload CV:</label><br></td>
+   <td><input type="file" id="cv" name="cv"><br></td>
+   </tr>
+    </table>
+    
+    <input type="button" value="Register" onclick="validateForm()">
+    <input type="button" value="Cancel" onclick="confirmCancel()">
+  </form>
+
+  <script>
+    function validateForm() {
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+      var email = document.getElementById('email').value;
+      var phone = document.getElementById('phone').value;
+      
+      if (username.trim() === '' || password.trim() === '' || email.trim() === '' || phone.trim() === '') {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      if (!/\d/.test(password) || !/[A-Z]/.test(password) || !/[!@#$%^&*]/.test(password) ) {
+        alert('Password must contain at least one number, one capital letter, and one special character.');
+        return;
+      }
+
+      if (!/\S+@\S+\.\S+/.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+
+      if (!/^\d{10}$/.test(phone)) {
+        alert('Please enter a valid 10-digit phone number.');
+        return;
+      }
+
+      alert('Form validated successfully!');
+    }
+
+    function confirmCancel() {
+      if (confirm("Are you sure you want to cancel?")) {
+        
+        alert("Cancelled successfully.");
+      } else {
+      
+      }
+    }
+  </script>
+</body>
+</html>
